@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+
+  <title>moving background</title>
+</head>
+
+<body>
+  <section class="move">
+    <h1>background move</h1>
+  </section>
+  <script src="js/Interactive-Moving-Background-Plugin-jQuery-backgroundMove-js/jquery.backgroundMove.js"></script>
+  <script>
+    $(".move").backgroundMove({
+      movememtStrength: "0"
+    });
+    //
+  </script>
+</body>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .move {
+    background: url(./img/back.jpg);
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 120vh;
+    background-size: cover;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    line-height: 650px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 6em;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif
+  }
+</style>
+
+</html>

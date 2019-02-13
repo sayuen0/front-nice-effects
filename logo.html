@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>背景繰り返しあれこれ</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .bg {
+    background-image: url("img/logo.png");
+    background-attachment: fixed;
+    /* 背景画像を固定 */
+    background-position-x: 0;
+    background-position-y: 0;
+    /* 縦横のスタート位置を固定 */
+    /* background-repeat: round; */
+    background-repeat: space;
+    /* /繰り返しかたを指定 等間隔でいい感じに */
+    background-origin: content-box;
+  }
+
+  .bg-mask {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    min-height: 500vh;
+    text-align: center;
+    padding-top: 100px;
+  }
+
+  table {
+    margin: auto;
+
+  }
+
+  table,
+  th,
+  td {
+    font-weight: bold;
+
+    table-layout: fixed;
+    border: 1px solid black;
+  }
+</style>
+
+<body>
+  <div class="bg">
+    <div class="bg-mask">
+      <table>
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td>小須田</td>
+          </tr>
+          <tr>
+            <th>生年月日</th>
+            <td>昨日</td>
+          </tr>
+          <tr>
+            <th>趣味</th>
+            <td> ★ </td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td>きのこ王国</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</body>
+
+</html>

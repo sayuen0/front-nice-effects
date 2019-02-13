@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Text Reveal Animation Effect</title>
+  <!-- from: Pure CSS Text Reveal From Smoke Animation Effect | CSS Animation Tutorial | Part 1/2 - YouTube https://www.youtube.com/watch?v=lx3UtGiRcYA -->
+</head>
+
+<body>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    section {
+      height: 100vh;
+      background-color: #000;
+    }
+
+    video {
+      object-fit: cover;
+      /*imageやvideoをボックスにどのようにはめ込むかを規定 */
+      /* cover: 縦横比を維持しないでボックスサイズに合わせる */
+      /* contain : 縦横比を維持して */
+    }
+
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right,
+        #f00,
+        #f00,
+        #0f0,
+        #0ff,
+        #ff0,
+        #0ff,
+        #00f);
+      mix-blend-mode: color;
+      /* 背景色と要素のブレンド方法を指定
+      color  :下の輝度をとって、上の色相と彩度をとる*/
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      width: 100%;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 5em;
+      letter-spacing: 0.2em;
+    }
+
+    h1 span {
+      display: inline-block;
+      opacity: 0;
+      animation: animate 1s linear forwards;
+    }
+
+    h1 span:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    h1 span:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    h1 span:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    h1 span:nth-child(4) {
+      animation-delay: 1.5s;
+    }
+
+    h1 span:nth-child(5) {
+      animation-delay: 2s;
+    }
+
+    h1 span:nth-child(6) {
+      animation-delay: 2.5s;
+    }
+
+    h1 span:nth-child(7) {
+      animation-delay: 3s;
+    }
+
+    h1 span:nth-child(8) {
+      animation-delay: 3.5s;
+    }
+
+    h1 span:nth-child(9) {
+      animation-delay: 4s;
+    }
+
+    @keyframes animate {
+      0% {
+        opacity: 0;
+        transform: rotateY(90deg);
+        filter: blur(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: rotateY(0deg);
+        filter: blur(0);
+      }
+    }
+  </style>
+  <section>
+    <video src="videos/smoke.mp4" autoplay muted></video>
+    <h1>
+      <span>P</span>
+      <span>O</span>
+      <span>R</span>
+      <span>T</span>
+      <span>F</span>
+      <span>O</span>
+      <span>L</span>
+      <span>I</span>
+      <span>O</span>
+    </h1>
+  </section>
+</body>
+
+</html>

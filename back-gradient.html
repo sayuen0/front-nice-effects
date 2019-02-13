@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .bg {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .bg::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: repeating-linear-gradient(45deg, black 0, black 40px, white 40px, white 80px);
+    background-position-y: 0;
+    /* repeating-linear-gradient(繰り返しの方向、
+開始色、途中色、終了色 */
+  }
+
+  .bg::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: repeating-linear-gradient(-45deg, black 0, black 40px, white 40px, white 80px);
+    background-position-y: 0;
+    /* repeating-linear-gradient(繰り返しの方向、
+開始色、途中色、終了色 */
+    mix-blend-mode: darken;
+    /* 背景の合成の仕方を決める */
+  }
+
+  .bg-2::after {
+    mix-blend-mode: lighten;
+
+  }
+
+  * {
+    font-size: 50px;
+  }
+
+  .bg-3::after {
+    mix-blend-mode: color-dodge;
+  }
+
+  .bg-4::after {
+    mix-blend-mode: hue;
+  }
+
+  .bg-5::after {
+    mix-blend-mode: difference;
+  }
+</style>
+
+<body>
+  <p>darken</p>
+  <div class="bg bg-1"></div>
+  <p>lightnen</p>
+  <div class="bg bg-2"></div>
+  <p>color-dodge</p>
+  <div class="bg bg-3"></div>
+  <p>hue</p>
+  <div class="bg bg-4"></div>
+  <p>difference</p>
+  <div class="bg bg-5"></div>
+  <div class="bg bg-6"></div>
+  <div class="bg bg-7"></div>
+</body>
+
+</html>

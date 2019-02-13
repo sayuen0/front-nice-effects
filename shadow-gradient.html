@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Drop shadow be a Gradient</title>
+</head>
+
+<body>
+
+  <div class="shadow"></div>
+
+</body>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #555;
+
+  }
+
+  .shadow {
+    position: relative;
+    margin: 200px auto;
+    width: 400px;
+    height: 250px;
+    background: linear-gradient(0deg, #000, #404040);
+  }
+
+  .shadow:before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    background: linear-gradient(45deg, red, orange, yellow, yellowgreen, green, blue, indigo, purple);
+    background-size: 400%;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    z-index: -1;
+    animation: animate 20s linear infinite;
+    filter: blur(10px);
+    /* 同じ大きさ+8pxだけはみ出て、背面の動くレインボーな背景 */
+  }
+
+  .shadow::after {}
+
+  @keyframes animate {
+    0% {
+      background-position: 0 0;
+    }
+
+    50% {
+      background-position: 400% 0;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
+  }
+</style>
+
+</html>

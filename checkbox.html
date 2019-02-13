@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Custom Checkbox Design</title>
+  </head>
+  <body>
+    <div class="checkbox-btn">
+      <input type="checkbox" name="" id="" />
+      <div>
+        <span class="slide"></span>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #f3f3f3;
+  }
+
+  .checkbox-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    background: #ccc;
+    /* 外枠 */
+  }
+
+  .checkbox-btn input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+    /* 見えない、外枠と同じ大きさのチェックを用意 。
+    この時、触れるようにしたいのでz-indexは強く。*/
+  }
+
+  .checkbox-btn div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid black;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* 動く範囲を限定 */
+  }
+
+  .checkbox-btn div .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    box-sizing: border-box;
+    background: #000;
+    transition: 0.5s;
+    /* 動くもの */
+  }
+
+  .checkbox-btn input:checked + div .slide {
+    transform: translateX(60px);
+    /* チェックされた時動く */
+  }
+  .checkbox-btn .slide:before {
+    content: "ON";
+    position: absolute;
+    top: 0;
+    left: -60px;
+    text-align: center;
+    width: 60px;
+    height: 100%;
+    line-height: 40px;
+    color: #fff;
+    font-weight: bold;
+    background: #00da00;
+  }
+  .checkbox-btn .slide:after {
+    content: "OFF";
+    position: absolute;
+    top: 0;
+    right: -60px;
+    text-align: center;
+    width: 60px;
+    height: 100%;
+    line-height: 40px;
+    color: #fff;
+    font-weight: bold;
+    background: #ff002d;
+  }
+</style>
