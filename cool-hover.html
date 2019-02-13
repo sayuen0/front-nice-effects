@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <ul>
+    <li><a href="">001</a></li>
+    <li><a href="">002</a></li>
+    <li><a href="">003</a></li>
+    <li><a href="">004</a></li>
+    <li><a href="">005</a></li>
+  </ul>
+  <style>
+    body {
+      margin: 0;
+      height: 0;
+      font-family: sans-serif;
+    }
+
+    ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+    }
+
+    ul a {
+      text-decoration: none;
+      position: relative;
+      display: block;
+      padding: 10px 20px;
+      margin: 20px 0;
+      color: #226666;
+      font-weight: bold;
+      transform: .5s;
+    }
+
+    ul a:hover {
+      color: white;
+    }
+
+    ul li a:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      transform: scaleY(2);
+      opacity: 0;
+      transition: .5s;
+    }
+
+    ul li a:hover:before {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+
+    ul li a::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      transform: scale(0);
+      opacity: 0;
+      transition: .5s;
+      z-index: -1;
+    }
+
+    ul li a:hover::after {
+      transform: scale(1);
+      opacity: 1;
+    }
+  </style>
+</body>
+
+</html>
