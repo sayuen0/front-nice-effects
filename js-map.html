@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Google map</title>
+  <!-- AIzaSyBs3igwBsBriY65-oKk9MnNcQayM4AfreE -->
+  <style>
+    #map {
+      height: 100%
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBs3igwBsBriY65-oKk9MnNcQayM4AfreE&callback=initMap"
+    async defer></script>
+  <script>
+    // 
+    var places;
+
+    function initMap() {
+
+      places = [{
+          name: "池袋",
+          coords: {
+            lat: 35.658034,
+            lng: 139.701636
+          },
+          content: "<h1>池袋</h1>"
+        }, {
+          name: "渋谷",
+          coords: {
+            lat: 35.65,
+            lng: 139.701
+          },
+          content: "<h1>渋谷</h1>"
+        }, {
+          name: "東京",
+          coords: {
+            lat: 35.681236,
+            lng: 139.767125
+          },
+          content: "<h1>東京駅</h1>"
+        },
+        {
+          name: "新橋",
+          coords: {
+            lat: 35.666401,
+            lng: 139.754207
+          },
+          content: "<h1>新橋</h1>"
+        },
+        {
+          name: "品川",
+          coords: {
+            lat: 35.609226,
+            lng: 139.730186
+          },
+          content: "<h1>品川</h1>"
+        }
+
+      ];
+
+      // Map options starts from ikebukuro
+      var initOptions = {
+        center: places[0].coords,
+        zoom: 12
+      }
+      // New Map
+      var map = new google.maps.Map(document.getElementById("map"), initOptions);
+
+      // iteration of addMarker 
+      for (var place of places) {
+        addMarker(place)
+      }
+
+      function addMarker(props) {
+        // coords:座標
+        var flag = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+        var marker = new google.maps.Marker({
+          position: props.coords,
+          map: map,
+          icon: flag
+        })
+        if (props.content) {
+          var infoWindow = new google.maps.InfoWindow({
+            content: props.content
+          })
+          marker.addListener("click", function () {
+            infoWindow.open(map, marker);
+          })
+        }
+      }
+    }
+  </script>
+</body>
+
+
+
+</html>
