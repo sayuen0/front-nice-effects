@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Custom Checkbox Design</title>
-  </head>
-  <body>
-    <div class="checkbox-btn">
-      <input type="checkbox" name="" id="" />
-      <div>
-        <span class="slide"></span>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Custom Checkbox Design</title>
+</head>
+
+<body>
+  <div class="checkbox-btn">
+    <input type="checkbox" name="" id="" />
+    <div>
+      <span class="slide"></span>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
+
 
 <style>
   body {
@@ -76,10 +80,11 @@
     /* 動くもの */
   }
 
-  .checkbox-btn input:checked + div .slide {
+  .checkbox-btn input:checked+div .slide {
     transform: translateX(60px);
     /* チェックされた時動く */
   }
+
   .checkbox-btn .slide:before {
     content: "ON";
     position: absolute;
@@ -93,6 +98,7 @@
     font-weight: bold;
     background: #00da00;
   }
+
   .checkbox-btn .slide:after {
     content: "OFF";
     position: absolute;

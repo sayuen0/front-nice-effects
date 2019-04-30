@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- タイマー -->
+  <h1>カウントダウン</h1>
+  <div class="timer">
+    <div class="second"></div>
+  </div>
+  <!-- ツイート -->
+  <h1>呟きたい文字列を入力するのだ</h1>
+  <textarea id="tweet-text-area" cols="30" rows="10"></textarea>
+  <button id="tweet-button">ツイートする（ログインしといてね）</button>
+  <!-- リストソート -->
+  <h1>ID順ソート  </h1>
+  <div class="button-wrapper">
+    <button class="ascending">昇順</button>
+    <button class="descending">降順</button>
+    <button class="random">ランダム</button>
+  </div>
+  <ul class="user-list"></ul>
+
+
+
+  <script>
+    // カウントダウン
+    const secondElement = document.querySelector(".second");
+    const goalSec = 3;
+    const goalTime = new Date().getTime() + goalSec * 1000;
+
+    let update = () => {
+      // console.log(new Date());
+      const currentTime = new Date().getTime();
+      const leftTime = goalTime - currentTime;
+      secondElement.innerHTML = (leftTime / 1000).toFixed(2);
+      if (leftTime <= 0) {
+        stop();
+      } else {
+        requestAnimationFrame(update);
+      }
+    }
+    update();
+
+    // 終了
+    let stop = () => {
+      secondElement.innerHTML = "Stopped !!";
+    }
+
+    //ツイート
+    document.querySelector("#tweet-button").addEventListener("click", () => {
+      let tweetText = document.querySelector("#tweet-text-area").value;
+      tweetText += "#JavaScript";
+
+      const encodedText = encodeURIComponent(tweetText);
+
+      const tweetURL = `https://twitter.com/intent/tweet?text=${encodedText}`;
+      window.open(tweetURL);
+    })
+
+    // リストソート
+    let userDataList = [{
+        id: 810,
+        name: "TDKR"
+      },
+      {
+        id: 1919,
+        name: "MUR"
+      },
+      {
+        id: 4545,
+        name: "KMR"
+      },
+      {
+        id: 114514,
+        name: "TON"
+      },
+      {
+        id: 0721,
+        name: "HTN"
+      },
+      {
+        id: 893,
+        name: "TNOK"
+      },
+      {
+        id: 5,
+        name: "GO"
+      }
+
+    ];
+
+
+    let updateList = (sourceList) => {
+      let listHTML = "";
+
+      for (const data of sourceList) {
+        listHTML += `<li>${data.id}: ${data.name}</li>`;
+      }
+      document.querySelector(".user-list").innerHTML = listHTML;
+    }
+
+    let sortBy = (order) => {
+      let result;
+      userDataList.sort((a, b) => {
+        switch (order) {
+          case "ascending":
+            result = a.id - b.id;
+            break;
+          case "descending":
+            result = b.id - a.id;
+            break;
+          default:
+            alert("順番指定が間違っています");
+            return;
+        }
+        return result;
+      });
+      updateList(userDataList);
+    }
+
+    let sortByRandom = (sourceArr) => {
+      updateList(shaffledList(sourceArr));
+    }
+    let shaffledList = (sourceArr) => {
+      let array = sourceArr.concat();
+      const length = array.length;
+      for (let i = length - 1; i >= 0; i--) {
+        const random = Math.floor(Math.random() * (i + 1));
+        [array[i], array[random]] = [array[random], array[i]];
+      }
+      return array;
+    }
+
+
+
+    const ascendButton = document.querySelector(".ascending");
+    const descendButton = document.querySelector(".descending");
+    const randomButton = document.querySelector(".random");
+
+    ascendButton.addEventListener("click", (event) => {
+      sortBy("ascending");
+    });
+    descendButton.addEventListener("click", (event) => {
+      sortBy("descending");
+    });
+    randomButton.addEventListener("click", (event) => {
+      sortByRandom(userDataList);
+    })
+
+
+    sortByRandom(userDataList);
+  </script>
+
+
+</body>
+
+</html>

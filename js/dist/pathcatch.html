@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="">URLに ?id=...&name=...&age=... の形でアクセスすると表示されます</label>
+  <table>
+    <tr>
+      <th>ID</th>
+      <td class="id"></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td class="name"></td>
+    </tr>
+    <tr>
+      <th>age</th>
+      <td class="age"></td>
+    </tr>
+  </table>
+  <script>
+    const hashes = {};
+
+    const parameters = location.search.split(/&|\?/).filter((value) => {
+      return value.includes("=");
+    });
+    parameters.forEach((parameter) => {
+      // hoge=huga →["hoge":"huga"]
+      const parameterList = parameter.split("=");
+      const key = parameterList[0];
+      // valueはデコード
+      const value = decodeURIComponent(parameterList[1]);
+      hashes[key] = value;
+    })
+    params = ["id", "name", "age"];
+
+    if (hashes["id"] != null) {
+      document.querySelector(".id").innerHTML = hashes["id"];
+      console.log("Hello");
+    }
+    if (hashes["name"] != null) {
+      document.querySelector(".name").innerHTML = hashes["name"];
+      console.log("Hello");
+    }
+    if (hashes["age"] != null) {
+      document.querySelector(".age").innerHTML = hashes["age"];
+      console.log("Hello");
+    }
+  </script>
+
+</body>
+
+</html>

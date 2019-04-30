@@ -72,7 +72,7 @@
 
       ];
 
-      // Map options starts from ikebukuro
+      // 新規マップ(池袋中心)
       var initOptions = {
         center: places[0].coords,
         zoom: 12
@@ -80,11 +80,11 @@
       // New Map
       var map = new google.maps.Map(document.getElementById("map"), initOptions);
 
-      // iteration of addMarker 
+      // placesからマーカーを作成
       for (var place of places) {
         addMarker(place)
       }
-
+      //define: マーカー作成
       function addMarker(props) {
         // coords:座標
         var flag = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';

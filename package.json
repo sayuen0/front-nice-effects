@@ -1,0 +1,23 @@
+{
+  "name": "front-nice-effects",
+  "version": "1.0.0",
+  "description": "- logo.html    - 背景画像の繰り返しや固定あれこれ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sayuen0/front-nice-effects.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sayuen0/front-nice-effects/issues"
+  },
+  "homepage": "https://github.com/sayuen0/front-nice-effects#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
